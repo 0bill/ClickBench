@@ -10,6 +10,6 @@ cat queries.sql | while read query; do
     for i in $(seq 1 $TRIES); do
         echo "$(date +%s)  $1 test ${i}"
         #sudo mysql -h localhost -P 3333 -u root -psecret mysqlslap -vvv -e "${query}"
-        winpty docker run -it mysql --rm mysql -h localhost -P 3333 -u root -psecret mysqlslap -vvv -e "SELECT * FROM t1 WHERE charcol1 LIKE '%ag%' ORDER BY intcol2 LIMIT 1;" 2>&1
+        docker run -it --rm msql mysql -h 192.168.1.26 -P 3333 -u root -psecret mysqlslap -vvv -e "SELECT * FROM t1 WHERE charcol1 LIKE '%ag%' ORDER BY intcol2 LIMIT 1;" 2>&1
     done;
 done;
