@@ -1,0 +1,8 @@
+﻿mysqlslap --concurrency=5 --iterations=20  --number-int-cols=2 --number-char-cols=3 --auto-generate-sql --user=root --password=secret --host=localhost --port=3333 --no-drop
+
+mysqlslap --user=root --password=secret --host=localhost --port=3333 --query="SELECT * FROM t1" --iterations=1000 --concurrency=20 
+
+
+mysql -h localhost -P 3333 -u root -psecret mysqlslap
+
+docker run -p 3333:3306 -it --rm -e MYSQL_ROOT_PASSWORD=secret mysql:8
